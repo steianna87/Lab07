@@ -14,13 +14,20 @@ class Controller:
         self._mese = 0
 
     def handle_umidita_media(self, e):
-        pass
-
+        self._view.clear_lst()
+        mese = self._mese
+        self._view.lst_result.controls.append(ft.Text(f"Umidità media nel mese selzionato:"))
+        self._view.update_page()
+        for situa_key in self._model.dict_situazioni.keys():
+            self._view.lst_result.controls.append(ft.Text(f"{situa_key}: {self._model.umidita_media_citta(situa_key, mese)}"))
+            self._view.update_page()
+        self._view.clear_dd()
 
 
     def handle_sequenza(self, e):
-        pass
+        self._model.optimization_recursive()
 
     def read_mese(self, e):
         self._mese = int(e.control.value)
+
 

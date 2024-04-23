@@ -76,3 +76,11 @@ class View(ft.UserControl):
 
     def update_page(self):
         self._page.update()
+
+    def clear_dd(self):
+        self.dd_mese.value = ''
+        self.update_page()
+
+    def clear_lst(self):
+        self.lst_result.controls = []
+        self.update_page()
